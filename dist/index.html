@@ -1,0 +1,1003 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	<link rel="shortcut icon" type="image/x-icon" href="/favicon.cdaae7c3.ico">
+	<title>They Who Were 8</title>
+	<link rel="stylesheet" href="/gameBoardStyle.ec1221be.css">
+
+	<script src="/ActionCards.893ab34b.js"></script>
+	<script src="/godTiles.f77a17e3.js"></script>
+	<script src="/userInput.3b34ecc8.js"></script>
+	<script src="/ActionCard.ff9d1dc7.js"></script>
+	<script src="/GodTile.3439d82e.js"></script>
+	<script src="/Player.dd406798.js"></script>
+
+
+<script src="/gameBoardStyle.ec1221be.js"></script></head>
+
+<body onload="loadPage();loadName()">
+
+
+<ul id="navbar">
+	<li class="navItem"><div class="navbtn rules">RULES
+			<img src="/rules.561708d1.JPG" class="rulesImg">
+	</div></li>
+
+	<li class="settings navItem">
+		<button class="navbtn settings">SETTINGS</button>
+		<!-- glory and infamy tokens in the nav bar -->
+
+	</li><li class="navItem"><div class="infamyIcon">
+		<span class="infamyText"> -1 Victory Point </span>
+	</div></li>
+
+	<li class="navItem"><div class="infamyScore">
+		15
+	</div></li>
+
+	<li class="navItem"><div class="gloryScore">
+		15
+	</div></li>
+
+	<li class="navItem"><div class="gloryIcon">
+		<span class="gloryText"> +2 Victory Points </span>
+
+	</div></li>
+
+
+</ul>
+
+
+
+
+<!-- modal for home -->
+<div class="bg-modal homemodal">
+	<div class="modal-content h">
+
+		<p> Are you sure you want to forfeit the game? </p>
+		<button class="hButton yes" onClick="location.href='mainMenu.html'"> YES </button>
+		<button class="hButton no"> NO </button>
+	</div>
+</div>
+
+
+<!-- modal for settings -->
+<div class="bg-modal settingsmodal">
+	<div class="modal-content">
+		<span class="closeSettings"> &times; </span>
+
+
+		<div>God tile buzz-in window</div>
+		<div class="slidecontainer">
+			<input type="range" min="1" max="10" value="5" onchange="showSliderValue(value)" class="slider" id="myRange">
+			<span id="sliderValue">5</span>
+		</div>
+
+		<input type="checkbox" id="showPoetry" name="showPoetry" checked="">
+		<label for="showPoetry">Show Poetry</label> <br>
+		<input type="checkbox" id="showTileScores" name="showTileScores" checked="">
+		<label for="showTileScores">Show Tile Scores</label>
+		<input type="checkbox" id="showMusic" name="showMusic" checked="">
+		<label for="showMusic">Music</label>
+		<input type="checkbox" id="showsFX" name="showsFX" checked="">
+		<label for="showsFX">SFX/FX</label>
+
+
+
+		<br>
+		<label for="colors">Choose a color:</label>
+		<select id="colors">
+			<option value="green" onselect="setPlayerColor(value)">Green</option>
+			<option value="red" onselect="setPlayerColor(value)">Red</option>
+			<option value="blue" onselect="setPlayerColor(value)">Blue</option>
+			<option value="purple" onselect="setPlayerColor(value)">Purple</option>
+		</select>
+	<br>
+<button class="hButton quit"> QUIT </button>
+	</div>
+
+</div>
+
+
+<div id="wrap">
+	<img src="/nameBox.442b66ef.png" class="nameBox" id="nameBoxP2">
+	<p class="playerName" id="player2Name">Kyle Moore</p>
+	<div class="player2">
+
+		<img src="/back-action.b2c753f9.jpg" id="player2Card1" alt="action card" class="p2Card">
+		<img src="/back-action.b2c753f9.jpg" id="player2Card2" alt="action card" class="p2Card">
+		<img src="/back-action.b2c753f9.jpg" id="player2Card3" alt="action card" class="p2Card">
+
+	</div>
+	<img src="" id="player2Tile1" alt="god tile" class="pairT tile" onmouseover="showDescription(getCardFromImg(src, godDeck).desc); showName(getCardFromImg(src, godDeck).name)" onmouseout="hideDescription()">
+		<span id="infamyP2T1" class="infamyDot"><p class="score">0</p></span>
+		<span id="gloryP2T1" class="gloryDot"><p class="score">0</p></span>
+	<img src="" id="player2Tile2" alt="god tile" class="pairL tile" onmouseover="showDescription(getCardFromImg(src, godDeck).desc); showName(getCardFromImg(src, godDeck).name)" onmouseout="hideDescription()">
+		<span id="infamyP2T2" class="infamyDot"><p class="score">0</p></span>
+		<span id="gloryP2T2" class="gloryDot"><p class="score">0</p></span>
+
+	<img src="/nameBox.442b66ef.png" class="nameBox" id="nameBoxP3">
+	<p class="playerName" id="player3Name">Thomas</p>
+	<div class="player3">
+
+		<img src="/back-action.b2c753f9.jpg" id="player3Card1" alt="action card" class="p3Card">
+		<img src="/back-action.b2c753f9.jpg" id="player3Card2" alt="action card" class="p3Card">
+		<img src="/back-action.b2c753f9.jpg" id="player3Card3" alt="action card" class="p3Card">
+
+	</div>
+	<img src="" id="player3Tile1" alt="god tile" class="pairR tile" onmouseover="showDescription(getCardFromImg(src, godDeck).desc); showName(getCardFromImg(src, godDeck).name)" onmouseout="hideDescription()">
+		<span id="infamyP3T1" class="infamyDot"><p class="score">0</p></span>
+		<span id="gloryP3T1" class="gloryDot"><p class="score">0</p></span>
+	<img src="" id="player3Tile2" alt="god tile" class="pairT tile" onmouseover="showDescription(getCardFromImg(src, godDeck).desc); showName(getCardFromImg(src, godDeck).name)" onmouseout="hideDescription()">
+		<span id="infamyP3T2" class="infamyDot"><p class="score">0</p></span>
+		<span id="gloryP3T2" class="gloryDot"><p class="score">0</p></span>
+
+	<img src="/nameBox.442b66ef.png" class="nameBox" id="nameBoxP1">
+	<p class="playerName" id="player1Name">Annie</p>
+	
+	<div class="player1">
+
+
+
+		<img src="/back-action.b2c753f9.jpg" id="player1Card1" alt="action card" class="p1Card" onclick="showActionButtons(id)" onmouseover="showName(getCardFromImg(src, ActionDeck).name); showDescription(getCardFromImg(src, ActionDeck).acttext)" onmouseout="hideDescription()">
+		<img src="/back-action.b2c753f9.jpg" id="player1Card2" alt="action card" class="p1Card" onclick="showActionButtons(id)" onmouseover="showName(getCardFromImg(src, ActionDeck).name); showDescription(getCardFromImg(src, ActionDeck).acttext)" onmouseout="hideDescription()">
+		<img src="/back-action.b2c753f9.jpg" id="player1Card3" alt="action card" class="p1Card" onclick="showActionButtons(id)" onmouseover="showName(getCardFromImg(src, ActionDeck).name); showDescription(getCardFromImg(src, ActionDeck).acttext)" onmouseout="hideDescription()">
+
+
+	</div>
+	<img src="" id="player1Tile1" alt="god tile" class="pairL tile" onclick="showTileButton(true)" onmouseover="showDescription(getCardFromImg(src, godDeck).desc); showName(getCardFromImg(src, godDeck).name)" onmouseout="hideDescription()">
+		<span id="infamyP1T1" class="infamyDot"><p class="score">0</p></span>
+		<span id="gloryP1T1" class="gloryDot"><p class="score">0</p></span>
+	<img src="" id="player1Tile2" alt="god tile" class="pairR tile" onclick="showTileButton(false)" onmouseover="showDescription(getCardFromImg(src, godDeck).desc); showName(getCardFromImg(src, godDeck).name)" onmouseout="hideDescription()">
+
+		<span id="infamyP1T2" class="infamyDot"><p class="score">0</p></span>
+		<span id="gloryP1T2" class="gloryDot"><p class="score">0</p></span>
+
+
+	<button id="playButton1" onclick="playTile(true)">Play Tile?</button>
+	<button id="playButton2" onclick="playTile(false)">Play Tile?</button>
+
+
+	<button id="cancelButton1" onclick="cancelTile(true)">Cancel</button>
+	<button id="cancelButton2" onclick="cancelTile(false)">Cancel</button>
+
+
+
+	<button id="actionButton1" class="actionButton" onclick="ActionDeck.setInPlay('player1Card1'); updatePlayedCard(id); addBorder(getCardFromID('player1Card1', ActionDeck).identifyTargets(godDeck.deck))">USE</button>
+
+	<button id="actionButton2" class="actionButton" onclick="ActionDeck.setInPlay('player1Card2'); updatePlayedCard(id); addBorder(getCardFromID('player1Card2', ActionDeck).identifyTargets(godDeck.deck))">USE</button>
+
+
+	<button id="actionButton3" class="actionButton" onclick="ActionDeck.setInPlay('player1Card3'); updatePlayedCard(id); addBorder(getCardFromID('player1Card3', ActionDeck).identifyTargets(godDeck.deck))">USE</button>
+
+
+
+
+
+	<button id="targetButton1" class="targetButton" onclick="targetT1(); updateGI(); ActionDeck.setFirstTar('player2Tile2')"> TARGET</button>
+	<button id="targetButton2" class="targetButton" onclick="targetT2(); updateGI();ActionDeck.setFirstTar('player1Tile1')"> TARGET</button>
+	<button id="targetButton3" class="targetButton" onclick="targetT3(); updateGI();ActionDeck.setFirstTar('player1Tile2')"> TARGET</button>
+	<button id="targetButton4" class="targetButton" onclick="targetT4(); updateGI();ActionDeck.setFirstTar('player3Tile1')"> TARGET</button>
+	<button id="targetButton5" class="targetButton" onclick="targetT5(); updateGI();ActionDeck.setFirstTar('player2Tile1')"> TARGET</button>
+	<button id="targetButton6" class="targetButton" onclick="targetT6(); updateGI();ActionDeck.setFirstTar('player3Tile2')"> TARGET</button>
+
+	<button id="target2Button1" class="target2Button" onclick="setSecondTarget1()"> 2ND TARGET</button>
+	<button id="target2Button2" class="target2Button" onclick="setSecondTarget2()"> 2ND TARGET</button>
+	<button id="target2Button3" class="target2Button" onclick="setSecondTarget3()"> 2ND TARGET</button>
+	<button id="target2Button4" class="target2Button" onclick="setSecondTarget4()"> 2ND TARGET</button>
+	<button id="target2Button5" class="target2Button" onclick="setSecondTarget5()"> 2ND TARGET</button>
+	<button id="target2Button6" class="target2Button" onclick="setSecondTarget6()"> 2ND TARGET</button>
+
+	<img src="/card_deck.e79f6a91.png" alt="Action card deck" id="Deck">
+
+	<img src="/back-action.b2c753f9.jpg" id="selectedCard">
+
+	<img class="startIcon" src="/start_icon.c28598ef.png" id="startIconPlayerLeft">
+	<img class="startIcon" src="/start_icon.c28598ef.png" id="startIconPlayerRight">
+	<img class="startIcon" src="/start_icon.c28598ef.png" id="startIconPlayerBottom">
+
+
+	<img src="/scoreBox.4397f148.png" class="scoreBox" id="scoreBoxPairT">
+		<span class="scoreCircle" id="scorePairT"><p class="boxScore">0</p></span>
+		<span class="smallScoreCircle" id="smallScorePairTL"><p class="smallScore">0</p></span>
+		<span class="smallScoreCircle" id="smallScorePairTR"><p class="smallScore">0</p></span>
+
+	<img src="/scoreBox.4397f148.png" class="scoreBox" id="scoreBoxPairL">
+		<span class="scoreCircle" id="scorePairL"><p class="boxScore">0</p></span>
+		<span class="smallScoreCircle" id="smallScorePairLL"><p class="smallScore">0</p></span>
+		<span class="smallScoreCircle" id="smallScorePairLR"><p class="smallScore">0</p></span>
+
+	<img src="/scoreBox.4397f148.png" class="scoreBox" id="scoreBoxPairR">
+		<span class="scoreCircle" id="scorePairR"><p class="boxScore">0</p></span>
+		<span class="smallScoreCircle" id="smallScorePairRL"><p class="smallScore">0</p></span>
+		<span class="smallScoreCircle" id="smallScorePairRR"><p class="smallScore">0</p></span>
+
+	<img src="/descriptionBox.b74532d7.png" id="descriptionBox">
+	<p id="actionCardDescription"></p><p>
+	</p><p id="actionCardName"></p><p>
+
+
+	<span id="timerCircle"><div id="timer">60</div></span>
+	<img src="/sword_icon.c5a7ed2f.png" id="swordIcon">
+
+	<img src="/poetryBar.190d1594.png" id="poetryBar"><div id="poetry">Poetry</div>
+
+
+</p></div>
+</body>
+<script language="javascript">function _createForOfIteratorHelper(o, allowArrayLike) { var it; if (typeof Symbol === "undefined" || o[Symbol.iterator] == null) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = o[Symbol.iterator](); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it.return != null) it.return(); } finally { if (didErr) throw err; } } }; }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+var Deck = /*#__PURE__*/function () {
+  function Deck(type) {
+    _classCallCheck(this, Deck);
+
+    //////console.log(cards);
+    this.deck = [];
+    this.InPlay;
+    this.firstTar;
+    this.secondTar;
+
+    if (type === "godTile") {
+      var cardArr = tiles;
+
+      for (var _i = 0; _i < cardArr.length; _i++) {
+        var card = new GodTile(cardArr[_i]); //////console.log(cardArr[i]);
+
+        this.deck.push(card);
+        this.glory = 15;
+        this.infamy = 15;
+      }
+    } else if (type === "ActionCards") {
+      var _cardArr = cards;
+
+      for (var _i2 = 0; _i2 < _cardArr.length; _i2++) {
+        var _card = new ActionCard(_cardArr[_i2]); //////console.log(card);
+
+
+        this.deck.push(_card);
+      }
+    } //////console.log(this.deck);
+
+  }
+
+  _createClass(Deck, [{
+    key: "shuffle",
+    value: function shuffle() {
+      this.deck.sort(function () {
+        return Math.random() - 0.5;
+      });
+    }
+  }, {
+    key: "setFirstTar",
+    value: function setFirstTar(ID) {
+      this.firstTar = ID;
+    }
+  }, {
+    key: "setSecondTar",
+    value: function setSecondTar(ID) {
+      this.secondTar = ID;
+    }
+  }, {
+    key: "resetSecondTar",
+    value: function resetSecondTar(ID) {
+      this.secondTar;
+    }
+  }, {
+    key: "resetFirstTar",
+    value: function resetFirstTar() {
+      this.firstTar;
+    }
+  }, {
+    key: "setInPlay",
+    value: function setInPlay(ID) {
+      //console.log("ININPLAY");
+      this.InPlay = ID;
+    }
+  }, {
+    key: "resetInPlay",
+    value: function resetInPlay() {
+      this.InPlay;
+    }
+  }, {
+    key: "deal",
+    value: function deal(numberDealt) {
+      //////console.log("DEAL " + numberDealt);
+      for (var _i3 = 0; _i3 < numberDealt - 1; _i3 = _i3 + 3) {
+        //////console.log(this.deck[i]);
+        this.deck[_i3].location = "player1";
+        this.deck[_i3 + 1].location = "player2";
+        this.deck[_i3 + 2].location = "player3";
+      }
+
+      return this;
+    }
+  }, {
+    key: "getCard",
+    value: function getCard(index) {
+      return this[index];
+    } //  drawCard(player){
+    //  }
+
+  }]);
+
+  return Deck;
+}(); //////console.log(ActionDeck.deck);
+
+
+var ActionDeck = new Deck("ActionCards");
+ActionDeck.shuffle();
+ActionDeck = ActionDeck.deal(9);
+var j = 1;
+
+for (var i = 0; i <= 6; i += 3) {
+  x = document.getElementById(ActionDeck.deck[i].location + "Card" + j); //////console.log(ActionDeck.deck[i].location + "Card" + (j));
+
+  j++;
+  x.src = "./images/" + ActionDeck.deck[i].img;
+}
+
+var godDeck = new Deck("godTile");
+godDeck.shuffle();
+godDeck.deal(6);
+var j = 1;
+
+for (var i = 0; i < 4; i += 3) {
+  x = document.getElementById(godDeck.deck[i].location + "Tile" + j); //////console.log(godDeck.deck[i].location + "Tile" + (j));
+
+  j++;
+  x.src = "./images/" + godDeck.deck[i].img;
+}
+
+var j = 1;
+
+for (var i = 1; i < 5; i += 3) {
+  x = document.getElementById(godDeck.deck[i].location + "Tile" + j); //////console.log(godDeck.deck[i].location + "Tile" + (j));
+
+  j++;
+  x.src = "./images/" + godDeck.deck[i].img;
+}
+
+var j = 1;
+
+for (var i = 2; i < 6; i += 3) {
+  x = document.getElementById(godDeck.deck[i].location + "Tile" + j); //////console.log(godDeck.deck[i].location + "Tile" + (j));
+
+  j++;
+  x.src = "./images/" + godDeck.deck[i].img;
+}
+
+function getCardFromImg(imgsrc, deck) {
+  //console.log("INGETCARDFROMIMG");
+  //////console.log(deck.deck);
+  var _iterator = _createForOfIteratorHelper(deck.deck),
+      _step;
+
+  try {
+    for (_iterator.s(); !(_step = _iterator.n()).done;) {
+      var card = _step.value;
+
+      //////console.log("CARD" + card);
+      if (card.img.slice(-9) == imgsrc.slice(-9)) {
+        //////console.log(card.acttext);
+        return card;
+      }
+    }
+  } catch (err) {
+    _iterator.e(err);
+  } finally {
+    _iterator.f();
+  }
+
+  return "none";
+}
+
+function identifyPlayable(className) {
+  //console.log("INIDENTIFYTARGETS")
+  var x = document.getElementsByClassName(className);
+  var i;
+
+  for (i = 0; i < x.length; i++) {
+    var imgsrc = x[i].src;
+    var card1 = getCardFromImg(imgsrc, ActionDeck);
+    var thisTar = card1.identifyTargets(godDeck.deck);
+
+    if (thisTar[0] === undefined) {
+      x[i].style.opacity = "0.3";
+    }
+  }
+}
+
+function getImgFromCard(card) {
+  //console.log('INGETIMGFROMCARD');
+  return "./images/" + card.img;
+}
+
+function getCardFromID(ID, deck) {
+  //console.log("INGETCARDFROMID");
+  var someimage = document.getElementById(ID).src; ////console.log(someimage);
+  ////console.log("CARD" + getCardFromImg(someimage, ActionDeck).name);
+
+  return getCardFromImg(someimage, deck);
+}
+
+function getIDFromCard(card) {}
+
+function removeBorders() {
+  //console.log('IMREMOVEBORDERS');
+  var x = document.getElementsByClassName("pairL tile");
+  var i;
+
+  for (i = 0; i < x.length; i++) {
+    x[i].style.boxShadow = "";
+    x[i].style.opacity = "";
+  }
+
+  var x = document.getElementsByClassName("pairR tile");
+  var i;
+
+  for (i = 0; i < x.length; i++) {
+    x[i].style.boxShadow = "";
+    x[i].style.opacity = "";
+  }
+
+  var x = document.getElementsByClassName("pairT tile");
+  var i;
+
+  for (i = 0; i < x.length; i++) {
+    x[i].style.boxShadow = "";
+    x[i].style.opacity = "";
+  }
+}
+
+function addBorder(array) {
+  //console.log("INADDBORDER");
+  var x = document.getElementsByClassName("pairL tile"); ////console.log("ARRAY" + array);
+  ////console.log("X" + x);
+
+  var i;
+
+  for (i = 0; i < x.length; i++) {
+    var imgsrc = x[i].src;
+    var card = getCardFromImg(imgsrc, godDeck);
+
+    if (array.includes(card)) {
+      //console.log("ID" + x[i].id);
+      x[i].style.boxShadow = "0px 0px 12px 10px #C5B358";
+      showTargetButtons(x[i].id);
+    } else {
+      x[i].style.opacity = "0.3";
+    }
+  }
+
+  var x = document.getElementsByClassName("pairR tile");
+  var i;
+
+  for (i = 0; i < x.length; i++) {
+    var imgsrc = x[i].src;
+    var card = getCardFromImg(imgsrc, godDeck);
+
+    if (array.includes(card)) {
+      //console.log("ID" + x[i].id);
+      x[i].style.boxShadow = "0px 0px 12px 10px #C5B358";
+      showTargetButtons(x[i].id);
+    } else {
+      x[i].style.opacity = "0.3";
+    }
+  }
+
+  var x = document.getElementsByClassName("pairT tile");
+  var i;
+
+  for (i = 0; i < x.length; i++) {
+    var imgsrc = x[i].src;
+    var card = getCardFromImg(imgsrc, godDeck);
+
+    if (array.includes(card)) {
+      //console.log("ID" + x[i].id);
+      x[i].style.boxShadow = "0px 0px 12px 10px #C5B358";
+      showTargetButtons(x[i].id);
+    } else {
+      x[i].style.opacity = "0.3";
+    }
+  }
+}
+
+function updateSupply() {
+  var inf = godDeck.infamy;
+  var glo = godDeck.glory;
+  var x = document.getElementsByClassName("infamyScore");
+  x[0].innerHTML = inf;
+  var x = document.getElementsByClassName("gloryScore");
+  x[0].innerHTML = glo;
+}
+
+function updateGI() {
+  var god = getCardFromImg(document.getElementById("player1Tile1").src, godDeck);
+  var inf = god.infamy;
+  document.getElementById("infamyP1T1").innerHTML = inf;
+  document.getElementById("infamyP1T1").style.fontSize = "xx-large";
+  var god = getCardFromImg(document.getElementById("player2Tile1").src, godDeck);
+  var inf = god.infamy;
+  document.getElementById("infamyP2T1").innerHTML = inf;
+  document.getElementById("infamyP2T1").style.fontSize = "xx-large";
+  var god = getCardFromImg(document.getElementById("player3Tile1").src, godDeck);
+  var inf = god.infamy;
+  document.getElementById("infamyP3T1").innerHTML = inf;
+  document.getElementById("infamyP3T1").style.fontSize = "xx-large";
+  var god = getCardFromImg(document.getElementById("player1Tile2").src, godDeck);
+  var inf = god.infamy;
+  document.getElementById("infamyP1T2").innerHTML = inf;
+  document.getElementById("infamyP1T2").style.fontSize = "xx-large";
+  var god = getCardFromImg(document.getElementById("player2Tile2").src, godDeck);
+  var inf = god.infamy;
+  document.getElementById("infamyP2T2").innerHTML = inf;
+  document.getElementById("infamyP2T2").style.fontSize = "xx-large";
+  var god = getCardFromImg(document.getElementById("player3Tile2").src, godDeck);
+  var inf = god.infamy;
+  document.getElementById("infamyP3T2").innerHTML = inf;
+  document.getElementById("infamyP3T2").style.fontSize = "xx-large";
+  var god = getCardFromImg(document.getElementById("player1Tile1").src, godDeck);
+  var glo = god.glory;
+  document.getElementById("gloryP1T1").innerHTML = glo;
+  document.getElementById("gloryP1T1").style.fontSize = "xx-large";
+  var god = getCardFromImg(document.getElementById("player2Tile1").src, godDeck);
+  var glo = god.glory;
+  document.getElementById("gloryP2T1").innerHTML = glo;
+  document.getElementById("gloryP2T1").style.fontSize = "xx-large";
+  var god = getCardFromImg(document.getElementById("player3Tile1").src, godDeck);
+  var glo = god.glory; ////console.log("GLOE" + god.glory);
+
+  document.getElementById("gloryP3T1").innerHTML = glo;
+  document.getElementById("gloryP3T1").style.fontSize = "xx-large";
+  var god = getCardFromImg(document.getElementById("player1Tile2").src, godDeck);
+  var glo = god.glory;
+  document.getElementById("gloryP1T2").innerHTML = glo;
+  document.getElementById("gloryP1T2").style.fontSize = "xx-large";
+  var god = getCardFromImg(document.getElementById("player2Tile2").src, godDeck);
+  var glo = god.glory;
+  document.getElementById("gloryP2T2").innerHTML = glo;
+  document.getElementById("gloryP2T2").style.fontSize = "xx-large";
+  var god = getCardFromImg(document.getElementById("player3Tile2").src, godDeck);
+  var glo = god.glory;
+  document.getElementById("gloryP3T2").innerHTML = glo;
+  document.getElementById("gloryP3T2").style.fontSize = "xx-large";
+}
+
+updateGI();
+
+function hideTargets() {
+  ////console.log('INHIDETARGETS');
+  var x = document.getElementsByClassName("targetButton");
+  var i;
+
+  for (i = 0; i < x.length; i++) {
+    x[i].style.display = "none";
+  }
+}
+
+function hideSecondTargets() {
+  ////console.log('INHIDETARGETS');
+  var x = document.getElementsByClassName("target2Button");
+  var i;
+
+  for (i = 0; i < x.length; i++) {
+    x[i].style.display = "none";
+  }
+}
+
+function reverseCard(ID) {
+  //console.log("REVERSECARDTIMES");
+  var x = document.getElementById(ID);
+  x.src = "./images/back-action.jpg";
+}
+
+identifyPlayable("p1Card");
+
+function updateScore() {
+  var a = document.getElementById("smallScorePairLL");
+  var ascore = getCardFromID("player2Tile2", godDeck).getScore();
+  a.innerHTML = "  " + ascore;
+  a.style.fontSize = "x-large";
+  a.style.textAlign = "center";
+  var b = document.getElementById("smallScorePairLR");
+  var bscore = getCardFromID("player1Tile1", godDeck).getScore();
+  b.innerHTML = "  " + bscore;
+  b.style.fontSize = "x-large";
+  b.style.textAlign = "center";
+  var c = document.getElementById("scorePairL");
+  c.innerHTML = "  " + (bscore + ascore);
+  c.style.fontSize = "xx-large";
+  c.style.textAlign = "center";
+  var a = document.getElementById("smallScorePairRL");
+  var ascore = getCardFromID("player1Tile2", godDeck).getScore();
+  a.innerHTML = "  " + ascore;
+  a.style.fontSize = "x-large";
+  a.style.textAlign = "center";
+  var b = document.getElementById("smallScorePairRR");
+  var bscore = getCardFromID("player3Tile1", godDeck).getScore();
+  b.innerHTML = "  " + bscore;
+  b.style.fontSize = "x-large";
+  b.style.textAlign = "center";
+  var c = document.getElementById("scorePairR");
+  c.innerHTML = "  " + (bscore + ascore);
+  c.style.fontSize = "xx-large";
+  c.style.textAlign = "center";
+  var a = document.getElementById("smallScorePairTL");
+  var ascore = getCardFromID("player2Tile1", godDeck).getScore();
+  a.innerHTML = "  " + ascore;
+  a.style.fontSize = "x-large";
+  a.style.textAlign = "center";
+  var b = document.getElementById("smallScorePairTR");
+  var bscore = getCardFromID("player3Tile2", godDeck).getScore();
+  b.innerHTML = "  " + bscore;
+  b.style.fontSize = "x-large";
+  b.style.textAlign = "center";
+  var c = document.getElementById("scorePairT");
+  c.innerHTML = "  " + (bscore + ascore);
+  c.style.fontSize = "xx-large";
+  c.style.textAlign = "center";
+}
+
+function showSecondTargets(current) {
+  var array = current.identifyTargets(godDeck.deck);
+  var x = document.getElementsByClassName("pairL tile"); ////console.log("ARRAY" + array);
+  ////console.log("X" + x);
+
+  var i;
+
+  for (i = 0; i < x.length; i++) {
+    var imgsrc = x[i].src;
+    var card = getCardFromImg(imgsrc, godDeck);
+
+    if (array.includes(card)) {
+      console.log("2ndID" + x[i].id);
+      x[i].style.boxShadow = "0px 0px 12px 10px #C5B358";
+      showSecondTargetButtons(x[i].id);
+    } else {
+      x[i].style.opacity = "0.3";
+    }
+  }
+
+  var x = document.getElementsByClassName("pairR tile");
+  var i;
+
+  for (i = 0; i < x.length; i++) {
+    var imgsrc = x[i].src;
+    var card = getCardFromImg(imgsrc, godDeck);
+
+    if (array.includes(card)) {
+      //console.log("ID" + x[i].id);
+      x[i].style.boxShadow = "0px 0px 12px 10px #C5B358";
+      showSecondTargetButtons(x[i].id);
+    } else {
+      x[i].style.opacity = "0.3";
+    }
+  }
+
+  var x = document.getElementsByClassName("pairT tile");
+  var i;
+
+  for (i = 0; i < x.length; i++) {
+    var imgsrc = x[i].src;
+    var card = getCardFromImg(imgsrc, godDeck);
+
+    if (array.includes(card)) {
+      //console.log("ID" + x[i].id);
+      x[i].style.boxShadow = "0px 0px 12px 10px #C5B358";
+      showSecondTargetButtons(x[i].id);
+    } else {
+      x[i].style.opacity = "0.3";
+    }
+  }
+}
+
+function setSecondTarget1() {
+  var tar1 = getCardFromID(ActionDeck.firstTar, godDeck);
+  ActionDeck.setSecondTar("player3Tile2");
+  var tar2 = getCardFromID(ActionDeck.secondTar, godDeck);
+  var current = getCardFromID(ActionDeck.InPlay, ActionDeck);
+  current.playActionCard2(tar1, tar2, godDeck);
+  document.getElementById(ActionDeck.InPlay).onmouseover = showDescription("");
+  reverseCard(ActionDeck.InPlay);
+  hideSecondTargets();
+  console.log('ING' + "infamyP" + ActionDeck.firstTar.charAt(6) + "T" + ActionDeck.firstTar.charAt(11));
+  setElementIsVisible("infamyP" + ActionDeck.firstTar.charAt(6) + "T" + ActionDeck.firstTar.charAt(11), true);
+  setElementIsVisible("gloryP" + ActionDeck.firstTar.charAt(6) + "T" + ActionDeck.firstTar.charAt(11), true);
+  console.log('ING' + "infamyP" + ActionDeck.secondTar.charAt(6) + "T" + ActionDeck.secondTar.charAt(11));
+  setElementIsVisible("infamyP" + ActionDeck.secondTar.charAt(6) + "T" + ActionDeck.secondTar.charAt(11), true);
+  setElementIsVisible("gloryP" + ActionDeck.secondTar.charAt(6) + "T" + ActionDeck.secondTar.charAt(11), true);
+  updateSupply();
+  removeBorders();
+  updateScore();
+  updateGI();
+  ActionDeck.resetInPlay();
+  ActionDeck.resetFirstTar();
+  ActionDeck.resetSecondTar();
+}
+
+function setSecondTarget2() {
+  var tar1 = getCardFromID(ActionDeck.firstTar, godDeck);
+  ActionDeck.setSecondTar("player2Tile1");
+  var tar2 = getCardFromID(ActionDeck.secondTar, godDeck);
+  var current = getCardFromID(ActionDeck.InPlay, ActionDeck);
+  current.playActionCard2(tar1, tar2, godDeck);
+  document.getElementById(ActionDeck.InPlay).onmouseover = showDescription("");
+  reverseCard(ActionDeck.InPlay);
+  hideSecondTargets();
+  console.log('ING' + "infamyP" + ActionDeck.firstTar.charAt(6) + "T" + ActionDeck.firstTar.charAt(11));
+  setElementIsVisible("infamyP" + ActionDeck.firstTar.charAt(6) + "T" + ActionDeck.firstTar.charAt(11), true);
+  setElementIsVisible("gloryP" + ActionDeck.firstTar.charAt(6) + "T" + ActionDeck.firstTar.charAt(11), true);
+  console.log('ING' + "infamyP" + ActionDeck.secondTar.charAt(6) + "T" + ActionDeck.secondTar.charAt(11));
+  setElementIsVisible("infamyP" + ActionDeck.secondTar.charAt(6) + "T" + ActionDeck.secondTar.charAt(11), true);
+  setElementIsVisible("gloryP" + ActionDeck.secondTar.charAt(6) + "T" + ActionDeck.secondTar.charAt(11), true);
+  updateSupply();
+  removeBorders();
+  updateScore();
+  updateGI();
+  ActionDeck.resetInPlay();
+  ActionDeck.resetFirstTar();
+  ActionDeck.resetSecondTar();
+}
+
+function setSecondTarget3() {
+  var tar1 = getCardFromID(ActionDeck.firstTar, godDeck);
+  ActionDeck.setSecondTar("player1Tile2");
+  var tar2 = getCardFromID(ActionDeck.secondTar, godDeck);
+  var current = getCardFromID(ActionDeck.InPlay, ActionDeck);
+  current.playActionCard2(tar1, tar2, godDeck);
+  document.getElementById(ActionDeck.InPlay).onmouseover = showDescription("");
+  reverseCard(ActionDeck.InPlay);
+  hideSecondTargets();
+  console.log('ING' + "infamyP" + ActionDeck.firstTar.charAt(6) + "T" + ActionDeck.firstTar.charAt(11));
+  setElementIsVisible("infamyP" + ActionDeck.firstTar.charAt(6) + "T" + ActionDeck.firstTar.charAt(11), true);
+  setElementIsVisible("gloryP" + ActionDeck.firstTar.charAt(6) + "T" + ActionDeck.firstTar.charAt(11), true);
+  console.log('ING' + "infamyP" + ActionDeck.secondTar.charAt(6) + "T" + ActionDeck.secondTar.charAt(11));
+  setElementIsVisible("infamyP" + ActionDeck.secondTar.charAt(6) + "T" + ActionDeck.secondTar.charAt(11), true);
+  setElementIsVisible("gloryP" + ActionDeck.secondTar.charAt(6) + "T" + ActionDeck.secondTar.charAt(11), true);
+  updateSupply();
+  removeBorders();
+  updateScore();
+  updateGI();
+  ActionDeck.resetInPlay();
+  ActionDeck.resetFirstTar();
+  ActionDeck.resetSecondTar();
+}
+
+function setSecondTarget4() {
+  var tar1 = getCardFromID(ActionDeck.firstTar, godDeck);
+  ActionDeck.setSecondTar("player3Tile1");
+  var tar2 = getCardFromID(ActionDeck.secondTar, godDeck);
+  var current = getCardFromID(ActionDeck.InPlay, ActionDeck);
+  current.playActionCard2(tar1, tar2, godDeck);
+  document.getElementById(ActionDeck.InPlay).onmouseover = showDescription("");
+  reverseCard(ActionDeck.InPlay);
+  hideSecondTargets();
+  console.log('ING' + "infamyP" + ActionDeck.firstTar.charAt(6) + "T" + ActionDeck.firstTar.charAt(11));
+  setElementIsVisible("infamyP" + ActionDeck.firstTar.charAt(6) + "T" + ActionDeck.firstTar.charAt(11), true);
+  setElementIsVisible("gloryP" + ActionDeck.firstTar.charAt(6) + "T" + ActionDeck.firstTar.charAt(11), true);
+  console.log('ING' + "infamyP" + ActionDeck.secondTar.charAt(6) + "T" + ActionDeck.secondTar.charAt(11));
+  setElementIsVisible("infamyP" + ActionDeck.secondTar.charAt(6) + "T" + ActionDeck.secondTar.charAt(11), true);
+  setElementIsVisible("gloryP" + ActionDeck.secondTar.charAt(6) + "T" + ActionDeck.secondTar.charAt(11), true);
+  updateSupply();
+  removeBorders();
+  updateScore();
+  updateGI();
+  ActionDeck.resetInPlay();
+  ActionDeck.resetFirstTar();
+  ActionDeck.resetSecondTar();
+}
+
+function setSecondTarget5() {
+  var tar1 = getCardFromID(ActionDeck.firstTar, godDeck);
+  ActionDeck.setSecondTar("player2Tile1");
+  var tar2 = getCardFromID(ActionDeck.secondTar, godDeck);
+  var current = getCardFromID(ActionDeck.InPlay, ActionDeck);
+  current.playActionCard2(tar1, tar2, godDeck);
+  document.getElementById(ActionDeck.InPlay).onmouseover = showDescription("");
+  reverseCard(ActionDeck.InPlay);
+  hideSecondTargets();
+  console.log('ING' + "infamyP" + ActionDeck.firstTar.charAt(6) + "T" + ActionDeck.firstTar.charAt(11));
+  setElementIsVisible("infamyP" + ActionDeck.firstTar.charAt(6) + "T" + ActionDeck.firstTar.charAt(11), true);
+  setElementIsVisible("gloryP" + ActionDeck.firstTar.charAt(6) + "T" + ActionDeck.firstTar.charAt(11), true);
+  console.log('ING' + "infamyP" + ActionDeck.secondTar.charAt(6) + "T" + ActionDeck.secondTar.charAt(11));
+  setElementIsVisible("infamyP" + ActionDeck.secondTar.charAt(6) + "T" + ActionDeck.secondTar.charAt(11), true);
+  setElementIsVisible("gloryP" + ActionDeck.secondTar.charAt(6) + "T" + ActionDeck.secondTar.charAt(11), true);
+  updateSupply();
+  removeBorders();
+  updateScore();
+  updateGI();
+  ActionDeck.resetInPlay();
+  ActionDeck.resetFirstTar();
+  ActionDeck.resetSecondTar();
+}
+
+function setSecondTarget6() {
+  var tar1 = getCardFromID(ActionDeck.firstTar, godDeck);
+  ActionDeck.setSecondTar("player3Tile2");
+  var tar2 = getCardFromID(ActionDeck.secondTar, godDeck);
+  var current = getCardFromID(ActionDeck.InPlay, ActionDeck);
+  current.playActionCard2(tar1, tar2, godDeck);
+  document.getElementById(ActionDeck.InPlay).onmouseover = showDescription("");
+  reverseCard(ActionDeck.InPlay);
+  hideSecondTargets();
+  console.log('ING' + "infamyP" + ActionDeck.firstTar.charAt(6) + "T" + ActionDeck.firstTar.charAt(11));
+  setElementIsVisible("infamyP" + ActionDeck.firstTar.charAt(6) + "T" + ActionDeck.firstTar.charAt(11), true);
+  setElementIsVisible("gloryP" + ActionDeck.firstTar.charAt(6) + "T" + ActionDeck.firstTar.charAt(11), true);
+  console.log('ING' + "infamyP" + ActionDeck.secondTar.charAt(6) + "T" + ActionDeck.secondTar.charAt(11));
+  setElementIsVisible("infamyP" + ActionDeck.secondTar.charAt(6) + "T" + ActionDeck.secondTar.charAt(11), true);
+  setElementIsVisible("gloryP" + ActionDeck.secondTar.charAt(6) + "T" + ActionDeck.secondTar.charAt(11), true);
+  updateSupply();
+  removeBorders();
+  updateScore();
+  updateGI();
+  ActionDeck.resetInPlay();
+  ActionDeck.resetFirstTar();
+  ActionDeck.resetSecondTar();
+}
+
+function targetT1() {
+  console.log("INPLAY" + ActionDeck.InPlay);
+  var current = getCardFromID(ActionDeck.InPlay, ActionDeck);
+
+  if (current.id === 6 || current.id === 2 || current.id === 4) {
+    hideTargets();
+    removeBorders();
+    showSecondTargets(current);
+  } else {
+    hideTargets();
+    removeBorders(); //console.log("CURR" + current.name);
+
+    current.playActionCard(getCardFromID("player2Tile2", godDeck), godDeck); //console.log("CALLING REVERSE");
+
+    document.getElementById(ActionDeck.InPlay).onmouseover = showDescription("");
+    reverseCard(ActionDeck.InPlay);
+    ActionDeck.resetInPlay();
+    setElementIsVisible("infamyP2T2", true);
+    setElementIsVisible("gloryP2T2", true);
+    updateSupply();
+    removeBorders();
+    updateScore();
+  }
+}
+
+function targetT2() {
+  console.log("INPLAY" + ActionDeck.InPlay);
+  var current = getCardFromID(ActionDeck.InPlay, ActionDeck);
+
+  if (current.id === 6 || current.id === 2 || current.id === 4) {
+    hideTargets();
+    removeBorders();
+    showSecondTargets(current);
+  } else {
+    hideTargets();
+    removeBorders(); //console.log("CURR" + current.name);
+
+    current.playActionCard(getCardFromID("player1Tile1", godDeck), godDeck); //console.log("CALLING REVERSE");
+
+    document.getElementById(ActionDeck.InPlay).onmouseover = showDescription("");
+    reverseCard(ActionDeck.InPlay);
+    ActionDeck.resetInPlay();
+    setElementIsVisible("infamyP1T1", true);
+    setElementIsVisible("gloryP1T1", true);
+    updateSupply();
+    removeBorders();
+    updateScore();
+  }
+}
+
+function targetT3() {
+  console.log("INPLAY" + ActionDeck.InPlay);
+  var current = getCardFromID(ActionDeck.InPlay, ActionDeck);
+
+  if (current.id === 6 || current.id === 2 || current.id === 4) {
+    hideTargets();
+    removeBorders();
+    showSecondTargets(current);
+  } else {
+    hideTargets();
+    removeBorders(); //console.log("CURR" + current.name);
+
+    current.playActionCard(getCardFromID("player1Tile1", godDeck), godDeck); //console.log("CALLING REVERSE");
+
+    document.getElementById(ActionDeck.InPlay).onmouseover = showDescription("");
+    reverseCard(ActionDeck.InPlay);
+    ActionDeck.resetInPlay();
+    setElementIsVisible("infamyP1T1", true);
+    setElementIsVisible("gloryP1T1", true);
+    updateSupply();
+    removeBorders();
+    updateScore();
+  }
+}
+
+function targetT4() {
+  console.log("INPLAY" + ActionDeck.InPlay);
+  var current = getCardFromID(ActionDeck.InPlay, ActionDeck);
+
+  if (current.id === 6 || current.id === 2 || current.id === 4) {
+    hideTargets();
+    removeBorders();
+    showSecondTargets(current);
+  } else {
+    hideTargets();
+    removeBorders(); //console.log("CURR" + current.name);
+
+    current.playActionCard(getCardFromID("player3Tile1", godDeck), godDeck); //console.log("CALLING REVERSE");
+
+    document.getElementById(ActionDeck.InPlay).onmouseover = showDescription("");
+    reverseCard(ActionDeck.InPlay);
+    ActionDeck.resetInPlay();
+    setElementIsVisible("infamyP3T1", true);
+    setElementIsVisible("gloryP3T1", true);
+    updateSupply();
+    removeBorders();
+    updateScore();
+  }
+}
+
+function targetT5() {
+  console.log("INPLAY" + ActionDeck.InPlay);
+  var current = getCardFromID(ActionDeck.InPlay, ActionDeck);
+
+  if (current.id === 6 || current.id === 2 || current.id === 4) {
+    hideTargets();
+    removeBorders();
+    showSecondTargets(current);
+  } else {
+    hideTargets();
+    removeBorders(); //console.log("CURR" + current.name);
+
+    current.playActionCard(getCardFromID("player2Tile1", godDeck), godDeck); //console.log("CALLING REVERSE");
+
+    document.getElementById(ActionDeck.InPlay).onmouseover = showDescription("");
+    reverseCard(ActionDeck.InPlay);
+    ActionDeck.resetInPlay();
+    setElementIsVisible("infamyP2T1", true);
+    setElementIsVisible("gloryP2T1", true);
+    updateSupply();
+    removeBorders();
+    updateScore();
+  }
+}
+
+function targetT6() {
+  console.log("INPLAY" + ActionDeck.InPlay);
+  var current = getCardFromID(ActionDeck.InPlay, ActionDeck);
+
+  if (current.id === 6 || current.id === 2 || current.id === 4) {
+    hideTargets();
+    removeBorders();
+    showSecondTargets(current);
+  } else {
+    hideTargets();
+    removeBorders(); //console.log("CURR" + current.name);
+
+    current.playActionCard(getCardFromID("player3Tile2", godDeck), godDeck); //console.log("CALLING REVERSE");
+
+    document.getElementById(ActionDeck.InPlay).onmouseover = showDescription("");
+    reverseCard(ActionDeck.InPlay);
+    ActionDeck.resetInPlay();
+    setElementIsVisible("infamyP3T2", true);
+    setElementIsVisible("gloryP3T2", true);
+    updateSupply();
+    removeBorders();
+    updateScore();
+  }
+}</script>
+
+<!-- changed location of gameboard to the end so that all the html is loadeed before the script is called -->
+
+<script src="/gameBoard.86b08cf7.js"></script>
+
+</html>

@@ -1,0 +1,1047 @@
+@font-face{
+	font-family: 'Mirai';
+	src:url("/mirai.03bd816a.ttf") format("truetype"),
+	url("/mirai.11c9c02c.woff2") format("woff2");
+}
+
+@font-face{
+	font-family: 'Seconda';
+	src:url("/secondasoft.048b044e.ttf") format("truetype"),
+	url("/secondasoft.12e4bc2c.woff2") format("woff2");
+}
+
+html, body {
+	font-family: Mirai;
+	margin: 0;
+	height: 100%;
+	overflow: hidden;
+	padding: 0px;
+	background-image: url("/canvas.9e9b8e04.jpg");
+
+}
+
+/* wraps the entire body, not including
+   the nav bar
+*/
+#wrap {
+	width: 1366px;
+	height: 748px;
+}
+
+#navbar {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+
+}
+/* images for rules default set to invisiblt */
+
+
+
+.navItem {
+  float: left;
+}
+
+.navItem a, navbtn {
+  background-color: #333;
+  text-align: center;
+	font-family: Mirai;
+
+	font: 50px;
+  padding: 10px;
+  text-decoration: none;
+}
+
+.navItem button:hover {
+	transform:scale(1.1);
+	cursor: pointer;
+
+
+
+}
+
+
+
+
+
+nav{
+	height:60px;
+
+	opacity: 0.7;
+
+	position: relative;
+}
+
+nav ul{
+	padding: 0;
+	margin: 0;
+	float: right;
+	margin-right: 20px;
+}
+
+nav ul li{
+	position: relative;
+	list-style: none;
+	display: inline-block;
+}
+
+
+/* settings drop down menu also changes the text of the button */
+.navbtn {
+  background-color: #333;
+  color: white;
+  padding: 5px 10px;
+	font-family: Mirai;
+  font-size: 29px;
+  border: none;
+  cursor: pointer;
+}
+
+li.settings {
+	display: inline-block;
+	float: right;
+
+}
+
+
+
+.settings-content {
+
+  display: none;
+  position: absolute;
+
+  min-width: 160px;
+  z-index: 1;
+}
+
+.settings:hover .settings-content {
+  display: block;
+}
+.rulesImg{
+	display: block;
+	border-radius: 5%;
+	box-shadow: 5px 10px 18px #888888;
+
+	position: absolute;
+	left: 13%;
+	top: 12%;
+	width:20%;
+	z-index: 2;
+	visibility:hidden;
+}
+
+.rules:hover .rulesImg{
+	visibility: visible;
+}
+
+
+/* settings modal css */
+.bg-modal{
+
+	width:100%;
+	height:100%;
+	background-color: rgba(0,0,0,0.7);
+
+	position: absolute;
+	top: 0;
+	display: none;
+	justify-content: center;
+	align-items: center;
+ display: none;
+/* the js file toggles between having the display show (flex) or not show (none) */
+	z-index: 4;
+}
+
+.modal-content{
+	width: 500px;
+	height: 250px;
+	background-color: white;
+	border-radius: 6px;
+	font-family: Mirai;
+
+	padding: 20px ;
+	font-size: 20px;
+	opacity: 0.86;
+	text-align: center;
+
+}
+/* changes height only for home */
+.modal-content.h{
+	height: 200px;
+}
+
+.hButton{
+
+	position: relative;
+	color: #fff !important;
+	text-transform: uppercase;
+	text-decoration: none;
+	background: #0f0808;
+	padding: 25px 50px 25px 50px;
+	border-radius: 8px;
+	font-size:20px;
+	font-family: Mirai;
+	opacity: 0.9;
+	margin: 30px;
+	border: none;
+	transition: all 0.4s ease 0s;
+}
+
+/* home class has been converted to rules */
+
+
+
+.hButton:hover {
+background: #434343;
+letter-spacing: 1px;
+-webkit-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+-moz-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+box-shadow: 5px 40px -10px rgba(0,0,0,0.57);
+transition: all 0.4s ease 0s;
+}
+
+
+
+/* select style dropdown */
+
+select{
+  width: 25%;
+  height: 40px;
+  font-size: 100%;
+	font-weight: bold;
+  cursor: pointer;
+  border-radius: 5px;
+	background-color: #c8d5e0;
+	text-transform: uppercase;
+  border: 2px gray;
+
+  color: black;
+  padding: 10px;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  padding: 10px;
+}
+
+
+.close{
+	float: right;
+	font-size: 40px;
+
+}
+
+
+.closeSettings{
+	float: right;
+	top: 20px;
+	font-size: 40px;
+
+}
+
+
+.close:hover,.close:focus{
+	color: gray;
+	text-decoration: none;
+	cursor: pointer;
+
+}
+
+.closeSettings:hover,.closeSettings:focus{
+	color: blue;
+	text-decoration: none;
+	cursor: pointer;
+
+}
+/* token left remaining in game */
+.gloryScore{
+	font: Mirai;
+	left: 25%;
+  color: white;
+	font-size: 40px;
+	top: 1px;
+	position: absolute;
+}
+
+.infamyScore{
+	font: Mirai;
+	left: 15%;
+	color: white;
+	font-size: 40px;
+	top: 1px;
+	position: absolute;
+}
+
+
+
+/* tokens in nav bar */
+.gloryIcon{
+	height: 40px;
+	width: 40px;
+	left: 30%;
+	top: 4px;
+	background-color: #c2952c;
+	border-radius: 50%;
+	position: absolute;
+
+}
+
+.gloryIcon .gloryText{
+	visibility: hidden;
+  width: 150px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 1;
+  top: 100%;
+  left: 50%;
+  margin-left: -60px;
+}
+
+.gloryIcon:hover{
+	transform:scale(1.1);
+}
+
+.gloryIcon:hover .gloryText{
+	visibility:visible;
+}
+
+
+
+.infamyIcon{
+	height: 40px;
+	width: 40px;
+	left: 20%;
+	top: 4px;
+	background-color: #624f5f;
+	border-radius: 50%;
+	position: absolute;
+}
+
+.infamyIcon .infamyText{
+	visibility: hidden;
+  width: 150px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 1;
+  top: 100%;
+  left: 50%;
+  margin-left: -60px;
+}
+
+.infamyIcon:hover{
+	transform:scale(1.1);
+}
+
+.infamyIcon:hover .infamyText{
+	visibility:visible;
+}
+
+
+/* slider for timer */
+.slidecontainer {
+  width: 100%; /* Width of the outside container */
+}
+
+.tile { /* god tile ratio is 11:14 */
+	width: 115px;
+	height: 146px;
+	box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5);
+	border-style: solid;
+	border-width: 5px;
+}
+
+.p1Card {
+	width: 130px;
+	height: 192px;
+	padding: 0px;
+	box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5);
+	border-style: solid;
+	border-width: 1px;
+}
+
+.p2Card { /* action card ratio is 13:19 */
+	width: 52px;
+	height: 76px;
+	padding: 0px;
+	border-style: solid;
+	border-width: 1px;
+	box-shadow: 10px -10px 10px rgba(0, 0, 0, 0.5);
+}
+
+.p3Card { /* action card ratio is 13:19 */
+	width: 52px;
+	height: 76px;
+	padding: 0px;
+	border-style: solid;
+	border-width: 1px;
+	box-shadow: -10px 10px 10px rgba(0, 0, 0, 0.5);
+}
+
+body {
+	height: 95vh;
+	font-family: Mirai;
+}
+
+.dropdown{
+	margin: 0 auto;
+}
+
+.logo{
+	padding: 5px 80px;
+	left: 10px;
+	top: 30px;
+	width: 60px;
+	height: auto;
+}
+
+.nameBox {
+	width: 260px;
+	height: 120px;
+	opacity: 0.8;
+	position: absolute;
+	margin: auto;
+	opacity: 0.7;
+}
+
+#nameBoxP1 {
+	position: fixed;
+	left: 580px;
+	bottom: -45px;
+}
+
+#nameBoxP2 {
+	position: fixed;
+	top: 100px;
+	left: -20px;
+}
+
+#nameBoxP3 {
+	position: fixed;
+	top: 100px;
+	left: 1190px;
+}
+
+.playerName {
+	font-weight: 1000;
+	font-size: 20px;
+}
+
+#player1Name {
+	position: fixed;
+	left: 628px;
+	bottom: 2px;
+	color: #228833;
+}
+
+#player2Name {
+	position: fixed;
+	top: 106px;
+	left: 28px;
+	color: #33bbee;
+}
+
+#player3Name {
+	position: fixed;
+	top: 106px;
+	left: 1238px;
+	color: #cc3311;
+}
+
+.startIcon {
+	width: 70px;
+	height: 70px;
+}
+
+#startIconPlayerLeft {
+	visibility: visible;
+	position: fixed;
+	left: 45px;
+	top: 62px;
+}
+
+#startIconPlayerRight {
+	visibility: visible;
+	position: fixed;
+	left: 1245px;
+	top: 62px;
+}
+
+#startIconPlayerBottom {
+	visibility: visible;
+	position: fixed;
+	left: 550px;
+	bottom: -7px;
+}
+
+div.player1 {
+	min-width: 340px;
+	position: fixed;
+	left: 482px;
+	bottom: 50px;
+	margin: auto;
+}
+
+div.player2 {
+	min-width: 275px;
+	transform: rotate(125deg);
+	position: fixed;
+	top: 200px;
+	left: 10px;
+	margin: auto;
+}
+
+div.player3 {
+	min-width: 275px;
+	transform: rotate(235deg);
+	position: fixed;
+	top: 110px;
+	left: 1030px;
+	margin: auto;
+}
+
+.gloryDot {
+	height: 40px;
+	width: 40px;
+	background-color: #c2952c;
+	border-radius: 50%;
+	border: solid 1px;
+	display: inline-block;
+  	position: fixed;
+	margin: auto;
+	text-align: center;
+}
+
+.infamyDot {
+	height: 40px;
+	width: 40px;
+	background-color: #624f5f;
+	border-radius: 50%;
+	border: solid 1px;
+	display: inline-block;
+	position: fixed;
+	margin: auto;
+	text-align: center;
+}
+
+.pairT { /*top pair of god tiles*/
+	position: fixed;
+	margin: auto;
+	bottom: 525px;
+}
+/* Top pair */
+#player2Tile1 {
+	left: 545px;
+	border-color: #33bbee;
+}
+
+#infamyP2T1 { /* left of tile + 10 */
+	left: 525px;
+	bottom: 655px;
+}
+
+#gloryP2T1 { /* left of tile + 125 */
+	left: 640px;
+	bottom: 655px;
+}
+
+#player3Tile2 {
+	left: 715px;
+	border-color: #cc3311;
+}
+
+#infamyP3T2 {
+	left: 695px;
+	bottom: 655px;
+}
+
+#gloryP3T2 {
+	left: 810px;
+	bottom: 655px;
+}
+
+.pairL { /*left pair of god tiles*/
+	position: fixed;
+	margin: auto;
+	bottom: 115px;
+}
+/* left pair*/
+#player1Tile1 {
+	left: 325px;
+	border-color: #228833;
+}
+
+#infamyP1T1 { /* bottom of tile + 146 */
+	bottom: 246px;
+	left: 310px;
+}
+
+#gloryP1T1 {
+	bottom: 246px;
+	left: 425px;
+}
+
+#player2Tile2 {
+	left: 160px;
+	border-color: #33bbee;
+}
+
+#infamyP2T2 {
+	bottom: 246px;
+	left: 140px;
+}
+
+#gloryP2T2 {
+	bottom: 246px;
+	left: 255px;
+}
+
+.pairR { /*right pair of god tiles*/
+	position: fixed;
+	margin: auto;
+	bottom: 115px;
+}
+/* right pair */
+#player1Tile2 {
+	left: 915px;
+	border-color: #228833;
+}
+
+#infamyP1T2 {
+	bottom: 246px;
+	left: 900px;
+}
+
+#gloryP1T2 {
+	bottom: 246px;
+	left: 1015px;
+}
+
+#player3Tile1 {
+	left: 1090px;
+	border-color: #cc3311;
+}
+
+#infamyP3T1 {
+	bottom: 246px;
+	left: 1070px;
+}
+
+#gloryP3T1 {
+	bottom: 246px;
+	left: 1185px;
+}
+
+/* buttons for playing God tiles */
+#playButton1 {
+	visibility: hidden; /*hidden at start*/
+	padding: 5px 5px;
+	position: fixed;
+	bottom: 290px;
+	left: 320px;
+}
+
+#playButton2 {
+	visibility: hidden; /*hidden at start*/
+	padding: 5px 5px;
+	position: fixed;
+	bottom: 290px;
+	left: 915px;
+}
+
+#cancelButton1 {
+	visibility: hidden; /*hidden at start*/
+	padding: 5px 5px;
+	position: fixed;
+	bottom: 290px;
+	left: 395px;
+}
+
+#cancelButton2 {
+	visibility: hidden; /*hidden at start*/
+	padding: 5px 5px;
+	position: fixed;
+	bottom: 290px;
+	left: 990px;
+}
+
+/* buttons for playing an action card */
+.actionButton {
+	visibility: hidden; /*hidden at start*/
+	padding: 5px 5px;
+	position: fixed;
+	cursor: pointer;
+	border: 2px #cccccc;
+	background-color: #b30000;
+	font-weight: 500;
+	color: white;
+}
+
+#actionButton1 {
+	bottom: 60px;
+	left: 530px;
+}
+
+#actionButton2 {
+	bottom: 60px;
+	left: 665px;
+}
+
+#actionButton3 {
+	bottom: 60px;
+	left: 802px;
+}
+
+#selectedCard { /* the enlarged action card upon selection */
+	visibility: hidden; /*hidden at start*/
+	width: 200px;
+	height: 294px;
+	box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.8);
+	position: fixed;
+	top: 290px;
+	left: 590px;
+}
+
+#gloryToken {
+	height: 25px;
+	width: 25px;
+	color: #ffa31a;
+}
+
+#infamyToken {
+	height: 25px;
+	width: 25px;
+	color: #ff00bf;
+}
+
+#Deck {
+	position: relative;
+	left: 1200px;
+	top: 225px;
+	width: 250px;
+	height: 360px;
+}
+
+.scoreBox {
+	width: 240px;
+	height: 65px;
+	opacity: 0.9;
+	position: fixed;
+	margin: auto;
+}
+
+#scoreBoxPairT {
+	left: 569px;
+	bottom: 460px;
+}
+
+#scoreBoxPairL {
+	left: 183px;
+	bottom: 50px;
+}
+
+#scoreBoxPairR {
+	left: 944px;
+	bottom: 50px;
+}
+
+
+.scoreCircle {
+	height: 40px;
+	width: 40px;
+	background-color: #f5f5dc;
+	border-radius: 50%;
+	display: inline-block;
+  	position: fixed;
+	margin: auto;
+}
+
+#scorePairT {
+	left: 670px;
+	bottom: 475px;
+}
+
+#scorePairL {
+	left: 285px;
+	bottom: 65px;
+}
+
+#scorePairR {
+	left: 1047px;
+	bottom: 65px;
+}
+
+.boxScore {
+	position: relative;
+	text-align: center;
+	bottom: 20px;
+	font-size: 25px;
+}
+
+.score {
+	position: relative;
+	text-align: center;
+	bottom: 20px;
+	font-size: 25px;
+}
+
+.tileScore {
+	position: relative;
+	text-align: center;
+	bottom: 20px;
+	font-size: 25px;
+	visibility: hidden;
+}
+
+.smallScoreCircle {
+	height: 30px;
+	width: 30px;
+	background-color: #f5f5dc;
+	border-radius: 50%;
+	display: inline-block;
+  	position: fixed;
+	margin: auto;
+}
+
+#smallScorePairTL { /*left-85 bottom+13*/
+	left: 585px;
+	bottom: 486px;
+}
+
+#smallScorePairTR { /*left+95 bottom+13*/
+	left: 765px;
+	bottom: 486px;
+}
+
+#smallScorePairLL {
+	left: 200px;
+	bottom: 76px;
+}
+
+#smallScorePairLR {
+	left: 380px;
+	bottom: 76px;
+}
+
+#smallScorePairRL {
+	left: 962px;
+	bottom: 76px;
+}
+
+#smallScorePairRR {
+	left: 1142px;
+	bottom: 76px;
+}
+
+.smallScore {
+	text-align: center;
+	position: relative;
+	bottom: 15px;
+	font-size: 18px;
+}
+
+#descriptionBox {
+	visibility: hidden;
+	position: absolute;
+	width: 450px;
+	height: 400px;
+	left: 470px;
+	top: 210px;
+	opacity: 0.7;
+}
+
+#actionCardDescription {
+	position: fixed;
+	left: 520px;
+	bottom: 300px;
+	max-width: 350px;
+	text-align: center;
+	font-weight: 600;
+	font-family: Seconda;
+	color: white;
+}
+
+#actionCardName {
+	position: fixed;
+	left: 620px;
+	bottom: 370px;
+	max-width: 300px;
+	font-weight: 800;
+	color: white;
+}
+
+#timerCircle {
+	height: 60px;
+	width: 60px;
+	background-color: #f5f5dc;
+	border-radius: 50%;
+	display: inline-block;
+  	position: fixed;
+	margin: auto;
+	left: 950px;
+	top: 70px;
+}
+
+#timer {
+	left: 297px;
+	bottom: 355px;
+	text-align: center;
+	position: relative;
+	font-size: 35px;
+}
+
+#swordIcon {
+	width: 10px;
+	height: 44px;
+	position: fixed;
+	bottom: 625px;
+	left: 975px;
+}
+
+#poetryBar {
+	visibility: hidden;
+	position: fixed;
+	height: 120px;
+	width: 1500px;
+	opacity: 0.65;
+	left: -50px;
+	top: 325px;
+}
+
+#poetry {
+	visibility: hidden;
+	position: relative;
+	bottom: 120px;
+	font-size: 35px;
+	font-weight: 500;
+	color: white;
+}
+
+/* buttons for playing an action card */
+.targetButton {
+	visibility: hidden; /*hidden at start*/
+	text-color: black;
+	display: inline-block;
+	position: fixed;
+	border-radius: 6px;
+	transition-duration: 0.4s;
+	font-family: Seconda;
+	background:linear-gradient(to bottom, #fffaff 5%, #c5b358 100%);
+	background-color:#fffaff;
+	border-radius:9px;
+	border:3px solid #877987;
+	display:inline-block;
+	cursor:pointer;
+	color:#1d1f1f;
+	font-size:11px;
+	padding:5px 5px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #000000;
+}
+
+.targetButton:hover {
+	background:linear-gradient(to bottom, #c5b358 5%, #fffaff 100%);
+	background-color:#c5b358;
+  background-color: #000000; /* Green */
+  
+}
+#targetButton1 {
+	bottom: 280px;
+	left: 200px;
+}
+#targetButton2 {
+	bottom: 280px;
+	left:	360px;
+}
+#targetButton3 {
+	bottom: 280px;
+	left: 950px;
+}
+#targetButton4 {
+	bottom: 280px;
+	left: 1127px;
+}
+#targetButton5 {
+	bottom: 690px;
+	left: 580px;
+}
+#targetButton6 {
+	bottom: 690px;
+	left: 752px;
+}
+/* buttons for playing an action card */
+.target2Button {
+	visibility: hidden; /*hidden at start*/
+
+text-color: black;
+display: inline-block;
+position: fixed;
+border-radius: 6px;
+transition-duration: 0.4s;
+font-family: Seconda;
+box-shadow: 3px 3px 0px 0px #d3dfe3;
+background:linear-gradient(to bottom, #fffaff 5%, #c5b358 100%);
+background-color:#C5B358;
+border-radius:9px;
+border:3px solid #877987;
+display:inline-block;
+cursor:pointer;
+color:#1d1f1f;
+font-size:11px;
+padding:5px 5px;
+text-decoration:none;
+text-shadow:0px 1px 0px #000000;
+}
+
+.target2Button:hover {
+	background:linear-gradient(to bottom, #c5b358 5%, #fffaff 100%);
+	background-color:#fffaff;
+  background-color: #000000; /* Green */
+  color: white;
+}
+#target2Button1{
+	bottom: 280px;
+	left: 200px;
+}
+#target2Button2{
+	bottom: 280px;
+	left: 360px;
+}
+
+
+#target2Button3{
+	bottom:280px;
+	left: 950px;
+}
+
+#target2Button4{
+	bottom: 280px;
+	left: 1127px;
+}
+
+
+#target2Button5{
+	left: 580px;
+	bottom: 690px;
+}
+
+
+#target2Button6{
+	bottom:690px;
+	left:752px;
+}
+
+
+/*# sourceMappingURL=/gameBoardStyle.ec1221be.css.map */

@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Main Menu</title>
+
+	<link rel="shortcut icon" type="image/x-icon" href="/favicon.cdaae7c3.ico">
+
+	<link rel="stylesheet" href="/mainMenuStyle.75a278f9.css">
+
+
+<script src="/mainMenuStyle.75a278f9.js"></script></head>
+
+<body>
+
+
+
+<img src="/logo.229f7ec8.png" class="logo">
+
+ <a href="https://www.auctoritas.tech/">
+<img src="/auc-logo.224868e1.png" class="auclogo">
+</a>
+
+<p class="aucCredit"> <a href="https://www.auctoritas.tech/">Created by Auctoritas LLC </a> </p>
+<a href="http://ludicreations.com/">
+<img src="/LudiCreations.6128332f.png" class="ludi">
+</a>
+<p class="credit"> Based on the card game designed by <a href="https://boardgamegeek.com/boardgamedesigner/42166/todd-sanders">Todd Sanders </a> © </p>
+
+<a href="https://boardgamegeek.com/boardgamedesigner/42166/todd-sanders">
+<img src="/Toddsanders.ef0073c2.png" class="toddLogo">
+</a>
+<p class="credit-2"> by <a href="http://ludicreations.com/"> LudiCreations ©</a> </p>
+
+<div id="titleRec" class="rectangle">
+
+<div id="wholePage">
+	<h1 id="title">They Who Were 8<h1>
+
+
+    <button class="button play"> NEW GAME</button>
+		<!-- onclick="window.open('gameBoard.html','New Game','resizable,height=748,width=1366'); return false;"  -->
+	<button class="button join"> JOIN GAME </button>
+
+
+
+
+
+</h1></h1></div>
+
+<div class="errorText" id="errorText">
+
+</div>
+
+<div class="bg-modal nameModal">
+	<!-- create game modal -->
+
+		<div class="modal-content nameContent">
+				<span class="closeName"> &times; </span>
+
+			ENTER NAME
+			<input type="text" id="username" name="username">
+			<span class="errorLength"> ! </span>
+			<!-- creating a grid here with gamesetupbuzz being the overall wrapper container -->
+			<div class="gameSetupBuzz">
+				<div> BUZZ-IN  </div>
+
+			<div>
+			<select id="sel buzzIn">
+				<!-- <option value="10"  >10 sec</option> -->
+				<option value="5">5 sec</option>
+				<!-- <option value="5" >3 sec</option> -->
+
+			</select>
+		</div>
+
+<div> TURN TIMER  </div>
+
+		<div>
+			<select id="sel turnTimer">
+				<option value="60">60 sec</option>
+				<option value="45">45 sec</option>
+				<option value="30">30 sec</option>
+			</select>
+		</div>
+
+		<div> USER COLOR </div>
+
+		<div>
+			<select id="sel userColor">
+				<option value="#228833">Green</option>
+				<option value="#cc3311">Red</option>
+				<option value="#33bbee">Blue</option>
+				<option value="#723e73">Purple</option>
+			</select>
+		</div>
+
+		<div> TYPE OF GAME </div>
+
+		<div>
+			<select id="sel typeGame">
+				<!-- <option value="2"  >2 players</option> -->
+				<option value="3">3 players</option>
+				<!-- <option value="4" >4 players</option>
+				<option value="pantheon" >Pantheon</option> -->
+			</select>
+		</div>
+
+			</div>
+			<span class="confirm">CREATE GAME </span>
+
+
+		</div>
+<!-- tutorial modal -->
+	<div class="bg-modal tutModal">
+		<div class="modal-content tutContent">
+			<p> Would you like to see a tutorial? </p>
+			<button class="hButton tyes" id="tyes"> YES </button>
+			<button class="hButton tno" id="tno"> NO </button>
+		</div>
+	</div>
+
+<!-- tutorial display modal -->
+<div class="bg-modal tutDisplay">
+	<div class="modal-content tutModContent">
+		<span class="closeTut"> &times; </span>
+		<span class="prevTut" id="prevTut"> ← </span>
+		<span class="nextTut" id="nextTut"> → </span>
+		<img src="/Tutorial1.f3f182c7.JPG" class="tutImg" id="tutImg">
+
+	</div>
+</div>
+
+
+		<!-- join modal -->
+	</div>
+
+
+<div class="bg-modal joinmodal">
+	<div class="modal-content">
+		<span class="close"> &times; </span>
+
+		<p> There are no games right now! </p>
+
+	</div>
+
+</div>
+
+<!--
+
+<div class="bg-modal settingsmodal">
+	<div class="modal-content">
+		<span class ="closeSettings"> &times; </span>
+
+		<p> Settings </p>
+
+	</div>
+
+</div>
+
+ -->
+
+
+<script src="/mainMenu.8a8af228.js"> </script>
+
+
+
+</div></body>
+</html>

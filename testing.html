@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+    <html>
+
+        <head>
+          <script src="./game/json/godTiles.js"></script>
+          <script src="./game/json/ActionCards.js"></script>
+          <script src = "Deck.js"></script>
+          <script src = "GodTile.js"></script>
+          <script src = "ActionCard.js"></script>
+          <script src = "Player.js"></script>
+          <script src = "buttonFunctions.js"></script>
+          <script src="Game.js"></script>
+
+            <title>
+                Testing Branch
+            </title>
+
+            <style type="text/css">
+                .circle {
+                    width: 130px;
+                    height: 130px;
+                    border-radius: 50%;
+                    float: left;
+                    margin-right: 50px;
+                }
+
+                .rounded {
+                    width: 130px;
+                    height: 130px;
+                    border-radius: 25%;
+                    float: left;
+                    margin-right: 50px;
+                }
+
+                .square {
+                    width: 130px;
+                    height: 130px;
+                    border-radius: 0%;
+                    float: left;
+                    margin-right: 50px;
+                }
+
+                #circle {
+                    background-color: #196F3D;
+                }
+
+                #rounded {
+                    background-color: #5DADE2;
+                }
+
+                #square {
+                    background-color: #58D68D;
+                }
+            </style>
+
+        </head>
+        <h1>Testing 2 Branch</h1>
+            <p>You can test the code by right clicking, inspect, and going to the console tab (you can also ctrl+shift+i)</p>
+            <p> Setup board for 3 -> player 1/2/3 for perspective <br>
+        <body>
+
+
+
+          <button onClick="Setup()"> Setup board</button>
+          <button onclick="addPlayer()">Add Player</button>
+
+          <button onclick="removeAllHands()">Remove Hands of All Players</button>
+          <button onclick="removeSingleCard()">Remove Single Card from all Players</button>
+          <button onclick="checkPlayableActions()">Check playable Action Cards</button>
+          <button onclick="playerAction()">Simulate Round</button>
+          <button onclick="simulateGame()">Simulate Game</button>
+          <button onclick="runMultipleSimulations()">Run Multiple Games</button>
+          <button onclick="reset()">Reset</button>
+          <button onclick="showCircle()">Show Circle Temporarily</button>
+
+
+          <div class="circle" id="circle"></div>
+
+          <div class="rounded" id="rounded"></div>
+
+          <div class="square" id="square"></div>
+
+        <script type="text/javascript">
+             //
+             // hideCircle();
+
+             function hideCircle() {
+
+                 document.getElementById("circle").style.display = "none";
+
+             }
+
+             function showCircle() {
+
+                 document.getElementById("circle").style.display = "block";
+                 var myvar = setTimeout(hideCircle, 10000);
+
+             }
+
+             document.getElementById("rounded").onclick = function() {
+
+                 document.getElementById("rounded").style.display = "none";
+
+             }
+
+             document.getElementById("square").onclick = function() {
+
+                 document.getElementById("square").style.display = "none";
+
+             }
+         </script>
+
+
+
+        </body>
+    </html>

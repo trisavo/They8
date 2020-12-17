@@ -1,0 +1,26 @@
+{
+  "name": "theywhowere8",
+  "version": "1.0.0",
+  "description": "![Header](public/images/read_me.JPG)",
+  "main": "index.html",
+  "scripts": {
+    "start":"parcel mainMenu.html --open",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/the1000thmonkey/Theywhowere8.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/the1000thmonkey/Theywhowere8/issues"
+  },
+  "homepage": "https://github.com/the1000thmonkey/Theywhowere8#readme",
+  "dependencies": {
+    "boardgame.io": "^0.39.14"
+  },
+  "devDependencies": {
+    "parcel-bundler": "^1.12.4"
+  }
+}
